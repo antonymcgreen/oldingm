@@ -1,0 +1,7 @@
+api_id = 123456
+api_hash = 'deadbeefdeadbeefdeadbeefdeadbeef'
+
+proxy = {'addr':'proxy.com',
+'port':1080,
+'username':'user',
+'password':'password'}
