@@ -1,0 +1,13 @@
+[Unit]
+Description=oldingm (telegram message joiner)
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/root/code/oldingm
+ExecStart=/usr/bin/python3 oldingm.py
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
