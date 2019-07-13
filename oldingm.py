@@ -8,7 +8,7 @@ from cred import api_id, api_hash, proxy
 logging.basicConfig(format='[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s',
                     level=logging.WARNING)
 
-deltaJoin = 15
+deltaJoin = 5
 deltaStop = 5
 
 client = TelegramClient('anon', api_id, api_hash)
@@ -44,9 +44,9 @@ async def my_event_handler(event):
         prevMsg = (await client.get_messages(event.chat_id, offset_id=msg.id, limit=1))[0]
         if prevMsg.from_id == client.meId and not noJoin:
             if noCheck or (msg.date - prevMsg.date).seconds < deltaJoin:
-                success = await prevMsg.edit(text=prevMsg.message+'\n'+msg.message)
+                success = await msg.edit(text=prevMsg.message+'\n'+msg.message)
                 if success:
-                    await msg.delete()
+                    await prevMsg.delete()
 
 client.start()
 client.run_until_disconnected()
